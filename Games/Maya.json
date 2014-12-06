@@ -1,0 +1,144 @@
+{
+  "name": "Super Maze",
+  "meta": {
+    "author": "Anurag Jain & Arvind Ravulavaru",
+    "email": " *anurag91jain@gmail.com & arvind.ravulavaru@gmail.com",
+    "tagline": "A Simple Text based Adventure game written in Javascript",
+    "welcome": "Welcome to Maya - A pilot written to test the text based adventure game engine written in Javascript. The aim of the game is to find the exit gate and leave the maze."
+  },
+  "rooms": [{
+    "room1": {
+      "alias": "Start Gate",
+      "description": "You are on the other side of a burnt broken bridge, you look back to see the debris and a steady stream of water. You turn around and see a fountain. (hint : navigate around to explore [ex: `go north`])",
+      "contextualHelp": "Look around and see if you can find something you can use",
+      "actions": null,
+      "exits": {
+        "north": "room2",
+        "east": "-1",
+        "south": "room5",
+        "west": "-1"
+      },
+      "objects": null,
+      "enemies": null
+    }
+  }, {
+    "room2": {
+      "alias": "A Fountain",
+      "description": "You are near the fountain. It is in front of a huge mansion. There is a half filled bottle of water just besides it",
+      "contextualHelp": "Water is helpful when you are dehydrated from all the walking around",
+      "actions": null,
+      "exits": {
+        "north": "room6",
+        "east": "room3",
+        "south": "room1",
+        "west": "-1"
+      },
+      "objects": {
+        "bottle": {
+          "actions": null
+        }
+      },
+      "enemies": null
+    }
+  }, {
+    "room3": {
+      "alias": "Forest",
+      "description": "There are trees all around you. There is a sword lying besides you.",
+      "contextualHelp": "You can use swords to kill enemies",
+      "actions": {
+        "pick sword": "You have picked up a sword."
+      },
+      "exits": {
+        "north": "room3",
+        "east": "room3",
+        "south": "room3",
+        "west": "room1"
+      },
+      "objects": {
+        "sword": {
+          "actions": null
+        }
+      },
+      "enemies": null
+    }
+  }, {
+    "room4": {
+      "alias": "Forest",
+      "description": "Tall trees are all around you. A speck of light is coming from the south.",
+      "contextualHelp": "Forest forest everywhere.. ",
+      "actions": null,
+      "exits": {
+        "north": "-1",
+        "east": "-1",
+        "south": "room7",
+        "west": "room1"
+      },
+      "objects": null,
+      "enemies": null
+    }
+  }, {
+    "room5": {
+      "alias": "Forest",
+      "description": "There are trees all around you",
+      "contextualHelp": "Forest forest everywhere.. ",
+      "actions": null,
+      "exits": {
+        "north": "room1",
+        "east": "room7",
+        "south": "room4",
+        "west": "room8"
+      },
+      "objects": null,
+      "enemies": null
+    }
+  }, {
+    "room6": {
+      "alias": "Mansion",
+      "description": "You have reached the entrance of the huge mansion. The door is locked and all the windows in the front are bolted",
+      "contextualHelp": "Huge mansions are a treasure of objects :)",
+      "actions": {
+        "open door": "The door is shut",
+        "open windows" : "The windows are bolted"
+      },
+      "exits": {
+        "north": "-1",
+        "east": "-1",
+        "south": "room2",
+        "west": "-1"
+      },
+      "objects": null,
+      "enemies": null
+    }
+  }, {
+    "room7": {
+      "alias": "River",
+      "description": "You are standing on the banks of a fast flowing river.",
+      "contextualHelp": "Ahh!! If only I knew where to go",
+      "actions": null,
+      "exits": {
+        "north": "room4",
+        "east": "-1",
+        "south": "room7",
+        "west": "-1"
+      },
+      "objects": null,
+      "enemies": null
+    }
+  }, {
+    "room8": {
+      "alias": "Exit gate",
+      "description": "You are at the exit gates!! You finally made it!! Thanks for playing Super Maze",
+      "contextualHelp": "",
+      "actions": null,
+      "isExitRoom" : "true",
+      "exits": {
+        "north": "-1",
+        "east": "-1",
+        "south": "-1",
+        "west": "-1"
+      },
+      "objects": null,
+      "enemies": null
+    }
+  }]
+}

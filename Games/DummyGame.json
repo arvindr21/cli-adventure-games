@@ -1,0 +1,26 @@
+{
+  "name": "Dummy Game",
+  "meta": {
+    "author": "Dumb & Dumber",
+    "email": " *dumb@game.com",
+    "tagline": "A dummy game to show multiple options",
+    "welcome": ""
+  },
+  "rooms": [{
+    "room1": {
+      "alias": "Exit",
+      "description": "  The game ends now.. Yeah!!! :o",
+      "contextualHelp": "",
+      "actions": null,
+      "isExitRoom": "true",
+      "exits": {
+        "north": "-1",
+        "east": "-1",
+        "south": "-1",
+        "west": "-1"
+      },
+      "objects": null,
+      "enemies": null
+    }
+  }]
+}
