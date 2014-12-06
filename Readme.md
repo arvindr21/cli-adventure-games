@@ -1,4 +1,4 @@
-# CLI Adventure Games [![Build Status](https://secure.travis-ci.org/arvindr21/cli-adventure-games.png?branch=master)](https://travis-ci.org/arvindr21/cli-adventure-games) [![NPM version](https://badge-me.herokuapp.com/api/npm/cli-adventure-games.png)](http://badges.enytc.com/for/npm/cli-adventure-games) [![Bitdeli Badge](https://d2weczhvl823v0.cloudfront.net/arvindr21/cli-adventure-games/trend.png)](https://bitdeli.com/free "Bitdeli Badge")
+# CLI Adventure Games [![NPM version](https://badge-me.herokuapp.com/api/npm/cli-adventure-games.png)](http://badges.enytc.com/for/npm/cli-adventure-games) [![Bitdeli Badge](https://d2weczhvl823v0.cloudfront.net/arvindr21/cli-adventure-games/trend.png)](https://bitdeli.com/free "Bitdeli Badge")
 
 
 [![NPM](https://nodei.co/npm/cli-adventure-games.png?downloads=true&stars=true)](https://nodei.co/npm/cli-adventure-games/)
@@ -41,10 +41,10 @@ To create your own game script, please refer to the `Maya.json` in the `Games` f
 PS : Please check with the me/contributors before updating the engine.
 
 ### Todos :  
-[ ] Save & Restore Game
-[ ] Player interaction with the objects (_use swords or rocket launchers_)
-[ ] Implement Lexical processing of commands
-[ ] Build game scripts for Zork I, Zork II and Zork III
+* [ ] Save & Restore Game
+* [ ] Player interaction with the objects (_use swords or rocket launchers_)
+* [ ] Implement Lexical processing of commands
+* [ ] Build game scripts for Zork I, Zork II and Zork III
 
 Special thanks to Anurag Jain & Jayesh Choudhari for their advice and contributions. 
 
