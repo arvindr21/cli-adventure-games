@@ -8,7 +8,7 @@ function Game() {
   this.inventory = {};
   this.score = 0;
   this.currentRoom = {};
-  this.keyWords = ['help', 'info', 'inventory', 'score', 'save', 'restore', 'throw', 'drop', 'take', 'pick', 'use', 'move', 'nothing'];
+  this.keyWords = ['help', 'info', 'inventory', 'score', 'save', 'restore', 'throw', 'drop', 'take', 'pick', 'get', 'use', 'move', 'nothing'];
 }
 
 Game.prototype.play = function(gsPath) { //Game Script Path
@@ -196,7 +196,7 @@ Game.prototype.processKeyword = function(response, room, _r) {
     self.save();
   } else if (response == 'restore') {
     self.restore();
-  } else if (response.split(" ")[0] == 'pick' || response.split(" ")[0] == 'take') {
+  } else if (response.split(" ")[0] == 'pick' || response.split(" ")[0] == 'take'|| response.split(" ")[0] == 'get') {
     self.pick(_r, response.split(" ")[1]);
   } else if (response.split(" ")[0] == 'throw' || response.split(" ")[0] == 'drop') {
     self.throw(_r, response.split(" ")[1]);
