@@ -34,10 +34,10 @@
   "main": "index.js",
   "engines": {
     "node": ">=0.8"
-  },  
+  },
   "dependencies": {
-    "chalk": "^0.5.1",
+    "chalk": "^2.3.0",
     "cli-table": "^0.3.1",
-    "inquirer": "^0.8.0"
+    "inquirer": "^4.0.1"
   }
 }

@@ -30,7 +30,7 @@ inquirer.prompt(
         name: "game",
         message: "Which Adventure would you like to go for?",
         choices: gameData
-    }],
+    }]).then(
     function(answers) {
         var Game = require(__dirname+'/../src/Game');
         Game.play(answers.game);

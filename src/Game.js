@@ -179,7 +179,7 @@ Game.prototype.prompt = function(text, callback) {
     message: text ? text : 'The Room description is empty :('
   };
   console.log('\n');
-  inquirer.prompt([p], callback);
+  inquirer.prompt([p]).then(callback);
 };
 
 Game.prototype.processKeyword = function(response, room, _r) {
