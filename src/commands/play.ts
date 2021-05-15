@@ -4,22 +4,37 @@ import { Command, flags } from '@oclif/command'
 
 import { $GetAllGames } from '../utils/helper';
 import { Game } from '../models/game';
+import GameEngine from '../Engine';
 
 export default class Play extends Command {
     static description = 'describe the command here'
-
+    /**
+     * @description
+     * @static
+     * @memberof Play
+     */
     static flags = {
         help: flags.help({ char: 'h' }),
-        // flag with a value (-n, --name=VALUE)
         name: flags.string({ char: 'n', description: 'name of the game to play' })
     }
 
-
+    /**
+     * @description
+     * @author Arvind Ravulavaru
+     * @date 2021-05-15
+     * @memberof Play
+     */
     showBanner(): void {
         this.log(' ** Text Based Adventure Games ** \n');
         this.log(' Developed for the people with the  world\'s most powerful graphic chip - Imagination \n');
     }
-
+    /**
+     * @description
+     * @author Arvind Ravulavaru
+     * @date 2021-05-15
+     * @returns
+     * @memberof Play
+     */
     async run() {
         this.showBanner();
         const { flags } = this.parse(Play)
@@ -32,24 +47,28 @@ export default class Play extends Command {
             }
         })
 
-        if (flags.name
-            && gameOptions.filter(opt => opt.name === flags.name).length === 1) {
-            console.log('Game found, launch game', flags.name, gameOptions)
-        } else {
-            if (flags.name) {
-                this.log(`${flags.name} game was not found!! \n\n`)
+        if (flags.name) {
+            const gamesFound: Game[] = games.filter(opt => opt.meta.name === flags.name);
+            if (gamesFound.length === 1) {
+                console.log('Game found, launching game', flags.name, '\n')
+                const game = new GameEngine(gamesFound[0].path);
+                game.play();
+                return;
             }
-            inquirer.prompt(
-                [{
-                    type: 'list',
-                    name: 'game',
-                    message: 'Which Adventure would you like to go for?',
-                    choices: gameOptions
-                }]).then(
-                     (answers) => {
-                        this.log(games[answers.game].meta.name);
-                    });
         }
+
+        inquirer.prompt(
+            [{
+                type: 'list',
+                name: 'game',
+                message: 'Which Adventure would you like to go for?',
+                choices: gameOptions
+            }]).then(
+                (answers) => {
+                    const game = new GameEngine(games[answers.game].path);
+                    game.play();
+                });
+
     }
 }
 
