@@ -29,29 +29,8 @@ USAGE
 <!-- usagestop -->
 # Commands
 <!-- commands -->
-* [`cli-adventure-games hello [FILE]`](#cli-adventure-games-hello-file)
 * [`cli-adventure-games help [COMMAND]`](#cli-adventure-games-help-command)
-* [`cli-adventure-games play [FILE]`](#cli-adventure-games-play-file)
-
-## `cli-adventure-games hello [FILE]`
-
-describe the command here
-
-```
-USAGE
-  $ cli-adventure-games hello [FILE]
-
-OPTIONS
-  -f, --force
-  -h, --help       show CLI help
-  -n, --name=name  name to print
-
-EXAMPLE
-  $ cli-adventure-games hello
-  hello world from ./src/hello.ts!
-```
-
-_See code: [src/commands/hello.ts](https://github.com/arvindr21/cli-adventure-games/blob/v1.0.0/src/commands/hello.ts)_
+* [`cli-adventure-games play`](#cli-adventure-games-play)
 
 ## `cli-adventure-games help [COMMAND]`
 
@@ -70,18 +49,17 @@ OPTIONS
 
 _See code: [@oclif/plugin-help](https://github.com/oclif/plugin-help/blob/v3.2.2/src/commands/help.ts)_
 
-## `cli-adventure-games play [FILE]`
+## `cli-adventure-games play`
 
 describe the command here
 
 ```
 USAGE
-  $ cli-adventure-games play [FILE]
+  $ cli-adventure-games play
 
 OPTIONS
-  -f, --force
   -h, --help       show CLI help
-  -n, --name=name  name to print
+  -n, --name=name  name of the game to play
 ```
 
 _See code: [src/commands/play.ts](https://github.com/arvindr21/cli-adventure-games/blob/v1.0.0/src/commands/play.ts)_
