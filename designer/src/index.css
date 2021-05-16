@@ -1,0 +1,85 @@
+body {
+    margin: 0;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto",
+        "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans",
+        "Helvetica Neue", sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+code {
+    font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
+        monospace;
+}
+
+.dndflow {
+    flex-direction: column;
+    display: flex;
+    height: 100%;
+}
+
+.dndflow aside {
+    border-right: 1px solid #eee;
+    padding: 15px 10px;
+    font-size: 12px;
+    background: #fcfcfc;
+}
+
+.dndflow aside .description {
+    margin-bottom: 10px;
+}
+
+.dndflow .dndnode {
+    height: 30px;
+    padding: 4px;
+    border: 1px solid #1a192b;
+    border-radius: 2px;
+    margin-bottom: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: grab;
+}
+
+.dndflow .dndnode.input {
+    border-color: #0041d0;
+}
+
+.dndflow .dndnode.output {
+    border-color: #ff0072;
+}
+
+.dndflow .reactflow-wrapper {
+    flex-grow: 1;
+    height: 90vh;
+    width: 100vw;
+    border: 1px solid #aaa;
+}
+
+@media screen and (min-width: 768px) {
+    .dndflow {
+        flex-direction: row;
+    }
+
+    .dndflow aside {
+        width: 20%;
+        max-width: 250px;
+    }
+}
+
+/* Milligram */
+.button-full {
+    width: 100%;
+}
+
+aside{
+    border-top: 1px solid #aaa;
+}
+
+.ReactModalPortal > div{
+    z-index: 9;
+}
+
+th, td{
+    font-size: 1.2rem;
+}
