@@ -18,6 +18,7 @@ import ReactFlow, {
     addEdge,
     isNode,
     removeElements,
+    useZoomPanHelper
 } from 'react-flow-renderer';
 
 import ExitNode from './Nodes/Exit';
@@ -26,6 +27,7 @@ import Logo from './logo.svg';
 import RoomNode from './Nodes/Room';
 import Sidebar from './Shared/Sidebar';
 import dagre from 'dagre';
+import { useToasts } from 'react-toast-notifications';
 
 const dagreGraph = new dagre.graphlib.Graph();
 dagreGraph.setDefaultEdgeLabel(() => ({}));
@@ -52,9 +54,10 @@ const onDragOver = (event: DragEvent) => {
 };
 
 function App() {
+    const { addToast } = useToasts();
     const [reactFlowInstance, setReactFlowInstance] = useState<OnLoadParams>();
     const [elements, setElements] = useState<Elements>(initialElements);
-
+    const { transform } = useZoomPanHelper();
     const onConnect = (params: Connection | Edge) => {
         params = params as Edge;
         params.label = `To ${params.targetHandle}`;
@@ -88,8 +91,6 @@ function App() {
                 const nodeWithPosition = dagreGraph.node(el.id);
                 el.targetPosition = isHorizontal ? Position.Left : Position.Top;
                 el.sourcePosition = isHorizontal ? Position.Right : Position.Bottom;
-                // we need to pass a slighltiy different position in order to notify react flow about the change
-                // @TODO how can we change the position handling so that we dont need this hack?
                 el.position = { x: nodeWithPosition.x + Math.random() / 1000, y: nodeWithPosition.y };
             }
 
@@ -114,15 +115,17 @@ function App() {
         }
     }, [reactFlowInstance]);
 
-    const restore = () => {
+    const restore = useCallback(() => {
         const flow = JSON.parse(localStorage.getItem('gds') || '{}');
 
-        if (flow && flow.elements && flow.elements.length > 0) {
+        if (flow) {
+            const [x = 0, y = 0] = flow.position;
             setElements(flow.elements || []);
+            transform({ x, y, zoom: flow.zoom || 0 });
+            id = flow.elements.length - 1;
         }
-    };
 
-
+    }, [setElements, transform]);
 
     const onDrop = (event: DragEvent) => {
         event.preventDefault();
@@ -130,11 +133,11 @@ function App() {
         if (reactFlowInstance) {
             const type = event.dataTransfer.getData('application/reactflow');
             if (elements.length > 0) {
-                let unqNodes = elements.filter(node => {
+                let unqGameNodes = elements.filter(node => {
                     return node.type === 'GameNode'
                 })
-                if (unqNodes.length > 0 && type === 'GameNode') {
-                    alert('There should be only one game node');
+                if (unqGameNodes.length > 0 && type === 'GameNode') {
+                    addToast('There can be only one game node!', { appearance: 'error' });
                     return;
                 }
             }
@@ -165,7 +168,6 @@ function App() {
 
             <div className="dndflow">
                 <ReactFlowProvider>
-                    <Sidebar onClear={clearMap} onSave={save} onExport={exportMap} onRestore={restore} onLayout={layout} />
                     <div className="reactflow-wrapper">
                         <ReactFlow
                             elements={elements}
@@ -198,6 +200,7 @@ function App() {
                             <Controls />
                         </ReactFlow>
                     </div>
+                    <Sidebar onClear={clearMap} onSave={save} onExport={exportMap} onRestore={restore} onLayout={layout} />
 
                 </ReactFlowProvider>
             </div>

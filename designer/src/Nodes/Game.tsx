@@ -1,7 +1,9 @@
-import { CSSProperties, ChangeEvent, FC, memo, useState } from 'react';
 import { Handle, NodeProps, Position } from 'react-flow-renderer';
+import React, { CSSProperties, ChangeEvent, FC, memo, useState } from 'react';
+import { faAngleDoubleDown, faAngleDoubleUp, faEdit, faGamepad, faTasks, faTimes } from '@fortawesome/free-solid-svg-icons';
 
 import { Collapse } from "react-collapse";
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import Modal from 'react-modal';
 
 const sourceHandleStyleA: CSSProperties = {
@@ -44,11 +46,18 @@ const GameNode: FC<NodeProps> = ({ data }) => {
             border: '1px solid #aaa',
             padding: '10px',
             background: '#fff',
-            width:'300px'
+            width: '300px'
         }}>
-            <h5 style={{ borderBottom: '1px solid #aaa' }}>Game Definition</h5>
+            <h5 style={{ borderBottom: '1px solid #aaa' }}>
+                <FontAwesomeIcon icon={faGamepad} className="icon mb-0" />
+            Game Definition
+            </h5>
             <div style={{ display: collapselIsOpen ? 'none' : 'block' }}>
-                <input type="button" className="button-full" value={'Manage '+game.name} onClick={() => setIsCollapseOpen(true)} />
+                <button className="button-full" onClick={() => setIsCollapseOpen(true)}>
+                    <FontAwesomeIcon icon={faTasks} className="icon mb-0" />
+                    {'Manage ' + game.name}
+                    <FontAwesomeIcon icon={faAngleDoubleDown} className="icon mb-0" />
+                </button>
             </div>
             <Collapse isOpened={collapselIsOpen}>
                 <table>
@@ -75,8 +84,15 @@ const GameNode: FC<NodeProps> = ({ data }) => {
                         </tr>
                     </tbody>
                 </table>
-                <input type="button" className="button-outline" value="Collapse" onClick={() => setIsCollapseOpen(false)} />&nbsp;&nbsp;
-                <button  onClick={openModal}>Edit</button>
+                <button className="button-outline" onClick={() => setIsCollapseOpen(false)}>
+                    Collapse
+                <FontAwesomeIcon icon={faAngleDoubleUp} className="icon mb-0" />
+                </button>
+                    &nbsp;&nbsp;
+                <button onClick={openModal}>
+                    <FontAwesomeIcon icon={faEdit} className="icon mb-0" />
+                    Edit
+                </button>
             </Collapse>
             <Modal
                 isOpen={modalIsOpen}
@@ -113,7 +129,10 @@ const GameNode: FC<NodeProps> = ({ data }) => {
                         <label>Author(s) Email (semicolon separated)</label>
                         <input type="text" name="email" value={game.email} placeholder="designer@game.com; designer2@game.com;" onChange={onChange} />
 
-                        <input className="button-primary" type="button" value="Close" onClick={closeModal} />
+                        <button className="button-primary" type="button" onClick={closeModal}>
+                            <FontAwesomeIcon icon={faTimes} className="icon mb-0" />
+                        Close
+                            </button>
                     </fieldset></form>
 
 

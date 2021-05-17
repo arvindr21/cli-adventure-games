@@ -83,3 +83,47 @@ aside{
 th, td{
     font-size: 1.2rem;
 }
+
+.game-node .button,
+.game-node button,
+.game-node input[type=button] {
+    background-color: #4da2ca;
+    border: 0.1rem solid #4da2ca;
+}
+
+.game-node .button-outline,
+.game-node button-outline,
+.game-node input[button] {
+    border: 0.1rem solid #4da2ca !important;
+    color: #4da2ca !important;
+    background-color: transparent !important;
+}
+
+.react-flow__node.react-flow__node-RoomNode.selected {
+    border: 3px solid #9b4dc9;
+}
+
+.react-flow__node.react-flow__node-GameNode.selected {
+    border: 3px solid #4da2ca;
+}
+
+.icon{
+    margin: 5px;
+}
+
+.mb-0{
+    margin-bottom: 0 !important;
+}
+
+.card-shadow{
+    box-shadow: 1px 1px 3px -1px rgb(0 0 0 / 54%);
+-webkit-box-shadow: 1px 1px 3px -1px rgb(0 0 0 / 54%);
+-moz-box-shadow: 1px 1px 3px -1px rgb(0 0 0 / 54%);
+}
+
+.draggableI {
+    background-image: url('./icons/draggable.svg');
+    background-position: 8px 6px;
+    background-size: 10px 15px;
+    background-repeat: no-repeat;
+}

@@ -1,7 +1,9 @@
 import { CSSProperties, ChangeEvent, FC, memo, useState } from 'react';
 import { Handle, NodeProps, Position } from 'react-flow-renderer';
+import { faAngleDoubleDown, faAngleDoubleUp, faDiceD6, faEdit, faTasks, faTimes } from '@fortawesome/free-solid-svg-icons';
 
 import { Collapse } from "react-collapse";
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import Modal from 'react-modal';
 
 const handleStyle: CSSProperties = {
@@ -10,9 +12,9 @@ const handleStyle: CSSProperties = {
 };
 
 const eastHandleStyle: CSSProperties = { ...handleStyle, right: 'auto', left: 50, top: '-10px' };
-const westHandleStyle: CSSProperties = { ...handleStyle, right: 'auto', left: 120 , top: '-10px' };
-const northHandleStyle: CSSProperties = { ...handleStyle, right: 'auto', left: 190 , top: '-10px' };
-const southHandleStyle: CSSProperties = { ...handleStyle, right: 'auto', left: 250 , top: '-10px' };
+const westHandleStyle: CSSProperties = { ...handleStyle, right: 'auto', left: 120, top: '-10px' };
+const northHandleStyle: CSSProperties = { ...handleStyle, right: 'auto', left: 190, top: '-10px' };
+const southHandleStyle: CSSProperties = { ...handleStyle, right: 'auto', left: 250, top: '-10px' };
 
 const eastSHandleStyle: CSSProperties = { ...handleStyle, right: 'auto', left: 50, bottom: '-10px' };
 const westSHandleStyle: CSSProperties = { ...handleStyle, right: 'auto', left: 120, bottom: '-10px' };
@@ -58,9 +60,16 @@ const RoomNode: FC<NodeProps> = ({ data }) => {
             <Handle type="target" position={Position.Top} id="west" style={westHandleStyle} />
             <Handle type="target" position={Position.Top} id="north" style={northHandleStyle} />
             <Handle type="target" position={Position.Top} id="south" style={southHandleStyle} />
-            <h5 style={{ borderBottom: '1px solid #aaa' }}>Room Definition</h5>
+            <h5 style={{ borderBottom: '1px solid #aaa' }}>
+                <FontAwesomeIcon icon={faDiceD6} className="icon mb-0" />
+                Room Definition
+                </h5>
             <div style={{ display: collapselIsOpen ? 'none' : 'block' }}>
-                <input type="button" className="button-full" value={'Manage ' + room.alias} onClick={() => setIsCollapseOpen(true)} />
+                <button className="button-full" onClick={() => setIsCollapseOpen(true)}>
+                    <FontAwesomeIcon icon={faTasks} className="icon mb-0" />
+                    {'Manage ' + room.alias}
+                    <FontAwesomeIcon icon={faAngleDoubleDown} className="icon mb-0" />
+                </button>
             </div>
             <Collapse isOpened={collapselIsOpen}>
                 <table>
@@ -72,8 +81,15 @@ const RoomNode: FC<NodeProps> = ({ data }) => {
 
                     </tbody>
                 </table>
-                <input type="button" className="button-outline" value="Collapse" onClick={() => setIsCollapseOpen(false)} />&nbsp;&nbsp;
-                <button onClick={openModal}>Edit</button>
+                <button className="button-outline" onClick={() => setIsCollapseOpen(false)}>
+                    Collapse
+                <FontAwesomeIcon icon={faAngleDoubleUp} className="icon mb-0" />
+                </button>
+                &nbsp;&nbsp;
+                <button onClick={openModal}>
+                    <FontAwesomeIcon icon={faEdit} className="icon mb-0" />
+                    Edit
+                </button>
             </Collapse>
             <Modal
                 isOpen={modalIsOpen}
@@ -98,7 +114,10 @@ const RoomNode: FC<NodeProps> = ({ data }) => {
                         <label>Alias</label>
                         <input type="text" placeholder="Dark days" name="alias" value={room.alias} onChange={onChange} />
 
-                        <input className="button-primary" type="button" value="Close" onClick={closeModal} />
+                        <button className="button-primary" type="button" onClick={closeModal}>
+                            <FontAwesomeIcon icon={faTimes} className="icon mb-0" />
+                        Close
+                            </button>
                     </fieldset></form>
 
 

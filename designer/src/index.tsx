@@ -3,13 +3,23 @@ import './index.css';
 import App from './App';
 import React from 'react';
 import ReactDOM from 'react-dom';
+import { ReactFlowProvider } from 'react-flow-renderer';
+import { ToastProvider } from 'react-toast-notifications';
 import reportWebVitals from './reportWebVitals';
 
 ReactDOM.render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>,
-  document.getElementById('root')
+    <ToastProvider
+        autoDismiss
+        autoDismissTimeout={3000}
+        placement='top-center'
+    >
+        <ReactFlowProvider>
+            <React.StrictMode>
+                <App />
+            </React.StrictMode>
+        </ReactFlowProvider>
+    </ToastProvider>,
+    document.getElementById('root')
 );
 
 // If you want to start measuring performance in your app, pass a function
