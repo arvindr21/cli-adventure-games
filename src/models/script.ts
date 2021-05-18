@@ -1,14 +1,8 @@
-// https://app.quicktype.io/
-// To parse this data:
-//
-//   import { Convert, Script } from "./file";
-//
-//   const script = Convert.toScript(json);
-
 export interface Script {
     meta:  Meta;
-    rooms: Room[];
+    rooms: RoomMap[];
 }
+export interface RoomMap { [key: string]: Room; }
 
 export interface Meta {
     name:    string;
@@ -19,30 +13,22 @@ export interface Meta {
 }
 
 export interface Room {
-    alias:          string;
-    description:    string;
-    contextualHelp: string;
-    actions:        null;
-    isExitRoom:     boolean;
-    exits:          Exits;
-    objects:        null;
-    enemies:        null;
+    name: string;
+    alias:  string;
+    description:  string;
+    contextualHelp:  string;
+    actions:  ActionsMap | null;
+    exits:  Exits;
+    objects:  ObjectsMap | null;
+    enemies:  EnemiesMap | null;
 }
 
+export interface ActionsMap { [key: string]: string; }
+export interface ObjectsMap { [key: string]: string; }
+export interface EnemiesMap { [key: string]: string; }
 export interface Exits {
-    north: number;
-    east:  number;
-    south: number;
-    west:  number;
-}
-
-// Converts JSON strings to/from your types
-export class Convert {
-    public static toScript(json: string): Script {
-        return JSON.parse(json);
-    }
-
-    public static scriptToJson(value: Script): string {
-        return JSON.stringify(value);
-    }
-}
+    north: string;
+    south: string;
+    east: string;
+    west: string;
+ }

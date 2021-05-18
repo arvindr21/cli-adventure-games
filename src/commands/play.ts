@@ -4,10 +4,10 @@ import { Command, flags } from '@oclif/command'
 
 import { $GetAllGames } from '../utils/helper';
 import { Game } from '../models/game';
-import GameEngine from '../Engine';
+import GameEngine from '../engine';
 
 export default class Play extends Command {
-    static description = 'describe the command here'
+    static description = 'play cli-adventure-games'
     /**
      * @description
      * @static
@@ -50,7 +50,7 @@ export default class Play extends Command {
         if (flags.name) {
             const gamesFound: Game[] = games.filter(opt => opt.meta.name === flags.name);
             if (gamesFound.length === 1) {
-                console.log('Game found, launching game', flags.name, '\n')
+                this.log(`Game found, launching game ${flags.name}\n`)
                 const game = new GameEngine(gamesFound[0].path);
                 game.play();
                 return;
@@ -64,11 +64,10 @@ export default class Play extends Command {
                 message: 'Which Adventure would you like to go for?',
                 choices: gameOptions
             }]).then(
-                (answers) => {
+               async (answers) => {
                     const game = new GameEngine(games[answers.game].path);
-                    game.play();
+                    await game.play();
                 });
-
     }
 }
 

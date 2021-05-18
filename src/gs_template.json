@@ -15,7 +15,7 @@
             "isExitRoom": true,
             "exits": {
                 "north": -1,
-                "east": -1,
+                "east"  : -1,
                 "south": -1,
                 "west": -1
             },
